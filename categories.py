@@ -35,10 +35,10 @@ CATEGORIES = {
     ],
 
     "Food": [
-        "Bagel","Burger","Burrito","Chicken Nuggets","Chocolate Cake","Cupcake","Curry",
-        "Donut","Dumplings","French Fries","Fried Chicken","Hot Dog","Ice Cream",
+        "Apple", "Bagel","Banana","Bread","Burger","Burrito","Cheese","Chicken Nuggets","Chocolate Cake","Cupcake","Curry",
+        "Donut","Dumplings","Eggs","French Fries","Fried Chicken","Hot Dog","Ice Cream","Juice","Milk",
         "Muesli Bar","Nachos","Pancakes","Pasta","Pie","Pizza","Popcorn","Ramen","Salad",
-        "Sandwich","Smoothie","Steak","Sushi","Tacos","Waffles"
+        "Sandwich","Smoothie","Soda","Soup", "Steak","Sushi","Tacos","Waffles", "Watermelon"
     ],
 
 

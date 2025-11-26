@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Spyfall — Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <title>Spyfall</title>
     <style>
         body {
             font-family: Arial;
@@ -40,11 +43,12 @@
 
     <h2>Locations</h2>
 
-    <div class="locations-container">
-        {% for loc in locations %}
-            <div>{{ loc }}</div>
-        {% endfor %}
-    </div>
+    <ul class="locations">
+      {% for loc in locations %}
+        <li>{{ loc }}</li>
+      {% endfor %}
+    </ul>
+
 
   <script>
     (function () {

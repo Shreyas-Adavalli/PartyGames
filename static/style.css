@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+
+.container {
+    padding: 10px;
+}
+
+/* Multi-column list collapses nicely on mobile */
+.locations {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 8px;
+    font-size: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.locations li {
+    padding: 4px 0;
+}
