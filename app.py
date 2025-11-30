@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, session, url_for
 import random
 from categories import CATEGORIES
 import os
 
 app = Flask(__name__)
+app.secret_key = "apasswordineedforsomereason" 
 
 players = []
 roles = []
@@ -12,10 +13,13 @@ current_item = ""
 timer_minutes = 3
 chosen_category = ""
 
-
 @app.route("/")
 def home():
-    return render_template("categories.html", categories=CATEGORIES.keys())
+    # If coming back from a finished game, refill the text area with previous names
+    previous_players = session.get("players_text", "")
+    return render_template("categories.html",
+                           categories=CATEGORIES.keys(),
+                           previous_players=previous_players)
 
 
 @app.route("/choose-category", methods=["POST"])
@@ -23,7 +27,12 @@ def choose_category():
     global chosen_category
     chosen_category = request.form["category"]
 
-    return render_template("players.html", category=chosen_category)
+    # Pass previously used names to the players screen
+    previous_players = session.get("players_text", "")
+
+    return render_template("players.html",
+                           category=chosen_category,
+                           previous_players=previous_players)
 
 
 @app.route("/start", methods=["POST"])
@@ -37,6 +46,9 @@ def start():
     players[:] = [name.strip() for name in raw.split("\n") if name.strip()]
     if not players:
         return redirect("/")
+
+    # Store the raw player string in session so we can reuse later
+    session["players_text"] = raw
 
     # Timer
     timer_minutes = int(request.form.get("timer", 3))

@@ -14,7 +14,8 @@
 <form method="POST" action="/start">
     <input type="hidden" name="category" value="{{ category }}">
 
-    <textarea name="players" rows="8" cols="30" placeholder="One name per line"></textarea><br><br>
+    <textarea name="players" rows="8" cols="30" placeholder="One name per line">{{ previous_players }}</textarea><br><br>
+    <!-- <textarea name="players" rows="8" cols="30" placeholder="One name per line"></textarea><br><br> -->
 
     <label>Timer (minutes):</label>
     <input type="number" name="timer" value="3" min="1" max="20"><br><br>

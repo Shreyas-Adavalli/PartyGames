@@ -1,79 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Load your stylesheet -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-  <title>Spyfall</title>
-</head>
+    <title>Spyfall</title>
+
 <body>
 
-<div class="container">
+    <!-- Main container -->
+    <div class="container" id="game" data-timer="{{ timer }}">
 
-    <h1 class="title">All Roles Assigned</h1>
+        <h1 class="title">All Roles Assigned</h1>
 
-    <!-- Timer Card -->
-    <div class="timer-box">
-        <p class="timer-label">Round Timer</p>
-        <p class="timer-value" id="timerDisplay">{{ timer }}:00</p>
-        <button id="startBtn">Start Timer</button>
+        <!-- Timer box -->
+        <div class="timer-box">
+            <p class="timer-label">Round Timer</p>
+            <p class="timer-value" id="timerDisplay">{{ timer }}:00</p>
+        </div>
+
+        <button id="startBtn" class="start-btn">Start Timer</button>
+
+        <!-- Locations section -->
+        <h2 class="subtitle">Possible Locations</h2>
+
+        <ul class="locations-grid">
+            {% for loc in locations %}
+                <li class="location-item">{{ loc }}</li>
+            {% endfor %}
+        </ul>
+
+        <!-- New game button -->
+        <form action="/" method="get" class="new-game-form">
+            <button type="submit" class="new-game-btn">
+                New Game
+            </button>
+        </form>
     </div>
 
-    <h2 class="subtitle">Locations</h2>
+    <!-- Timer Script -->
+    <script>
+        (function () {
+            const gameEl = document.getElementById('game');
+            const minutes = Number(gameEl.dataset.timer) || 3;
+            let timeLeft = minutes * 60;
 
-    <!-- New location grid using your styles -->
-    <ul class="locations-grid">
-        {% for loc in locations %}
-            <li class="location-item">{{ loc }}</li>
-        {% endfor %}
-    </ul>
+            const timerDisplay = document.getElementById('timerDisplay');
+            const startBtn = document.getElementById('startBtn');
 
-</div>
+            let intervalId = null;
+            let started = false;
 
-<script>
-(function () {
-  const minutes = Number({{ timer }}) || 3;
-  let timeLeft = minutes * 60;
+            function formatTime(sec) {
+                const m = Math.floor(sec / 60);
+                const s = sec % 60;
+                return m + ':' + (s < 10 ? '0' + s : s);
+            }
 
-  const timerDisplay = document.getElementById('timerDisplay');
-  const startBtn = document.getElementById('startBtn');
+            timerDisplay.textContent = formatTime(timeLeft);
 
-  let started = false;
-  let interval = null;
+            function startTimer() {
+                if (started) return;
+                started = true;
+                startBtn.disabled = true;
 
-  function formatTime(sec) {
-      const m = Math.floor(sec / 60);
-      const s = sec % 60;
-      return m + ':' + (s < 10 ? '0' + s : s);
-  }
+                intervalId = setInterval(() => {
+                    timeLeft--;
 
-  timerDisplay.textContent = formatTime(timeLeft);
+                    if (timeLeft < 0) {
+                        clearInterval(intervalId);
+                        timerDisplay.textContent = "Time's up!";
+                        return;
+                    }
 
-  startBtn.onclick = () => {
-    if (started) return;
-    started = true;
-    startBtn.disabled = true;
+                    timerDisplay.textContent = formatTime(timeLeft);
+                }, 1000);
+            }
 
-    interval = setInterval(() => {
-      timeLeft--;
-      if (timeLeft < 0) {
-        clearInterval(interval);
-        timerDisplay.textContent = "Time's up!";
-      } else {
-        timerDisplay.textContent = formatTime(timeLeft);
-      }
-    }, 1000);
-  };
-})();
-</script>
-
-<form action="/" method="get" style="text-align:center; margin-top:20px;">
-  <button type="submit" style="font-size:18px; padding:8px 14px;">
-    New Game
-  </button>
-</form>
+            startBtn.addEventListener('click', startTimer);
+        })();
+    </script>
 
 </body>
 </html>
