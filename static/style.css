@@ -2,18 +2,18 @@
 
 /* Clean modern font */
 body {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Verdana";
     margin: 0;
     padding: 0;
-    background: #51a2ff;
-    color: #222;
+    background: #8ec9ff;
+    color: #24211f;
 }
 
 /* Centers content with max width for readability */
 .container {
     max-width: 700px;
-    margin: auto;
-    padding: 20px;
+    margin: 0 auto;
+    padding: center;
 }
 
 /* === TITLES ========================================================== */
@@ -96,6 +96,30 @@ body {
     }
 }
 
+/* Center all headings and paragraph text */
+h1, h2, h3, p, label {
+    text-align: center;
+}
+
+/* Center all forms and inner content */
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Make inputs and textareas centered + responsive */
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 90%;
+    max-width: 400px;
+    margin: 10px auto;
+    display: block;
+    text-align: center;
+}
+
 button,
 .start-btn,
 .new-game-btn,
@@ -103,12 +127,11 @@ button,
 .player-btn,
 .reveal-btn {
     display: block;
-    width: 100%;
+    width: 90%;
     max-width: 500px;      /* prevents it from being massive on desktop */
     margin: 10px auto;
     padding: 15px 20px;
-
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     border-radius: 10px;
     text-align: center;
 
