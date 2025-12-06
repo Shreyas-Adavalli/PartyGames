@@ -125,7 +125,8 @@ button,
 .new-game-btn,
 .category-btn,
 .player-btn,
-.reveal-btn {
+.reveal-btn
+.menu-btn {
     display: block;
     width: 90%;
     max-width: 500px;      /* prevents it from being massive on desktop */
