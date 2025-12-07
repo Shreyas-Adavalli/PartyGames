@@ -64,7 +64,7 @@ def start():
     roles[:] = ["Spy"] + [current_item] * (len(players) - 1)
     random.shuffle(roles)
 
-    return redirect(url_for('player'))
+    return redirect(url_for('spyfall_player'))
 
 
 @app.route("/spyfall/player")
@@ -78,7 +78,7 @@ def player():
 
         # Finished showing all roles
         if current_player >= len(players):
-            return redirect(url_for('game'))
+            return redirect(url_for('spyfall_game'))
 
         name = players[current_player]
         role = roles[current_player]
