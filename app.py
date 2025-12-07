@@ -20,7 +20,7 @@ def home():
 @app.route("/spyfall")
 def spyfall_home():
     previous_players = session.get("players_text", "")
-    return render_template("categories.html",
+    return render_template("spyfall/categories.html",
                            categories=CATEGORIES.keys(),
                            previous_players=previous_players)
 
@@ -33,7 +33,7 @@ def choose_category():
     # Pass previously used names to the players screen
     previous_players = session.get("players_text", "")
 
-    return render_template("players.html",
+    return render_template("spyfall/players.html",
                            category=chosen_category,
                            previous_players=previous_players)
 
@@ -84,7 +84,7 @@ def player():
         role = roles[current_player]
         more = current_player < len(players) - 1
 
-        return render_template("role.html",
+        return render_template("spyfall/role.html",
                                player_name=f"{name}, this is your role!",
                                message=role,
                                more=more)
@@ -94,15 +94,22 @@ def player():
         if next_index >= len(players):
             return redirect(url_for('game'))
 
-        return render_template("buffer.html",
+        return render_template("spyfall/buffer.html",
                                next_player=players[next_index])
 
 
 @app.route("/spyfall/game")
 def game():
-    return render_template("game.html",
+    return render_template("spyfall/game.html",
                            timer=timer_minutes,
                            locations=CATEGORIES[chosen_category])
+
+
+
+
+@app.route("/wavelength")
+def wavelength_home():
+    return render_template("wavelength/home.html")
 
 
 if __name__ == "__main__":
