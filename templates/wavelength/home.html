@@ -16,7 +16,7 @@
             height: 100vh;
             margin: 0;
             background-color: #f0f0f0;
-            background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background-image: linear-gradient(135deg, #f5f7fa 0%, #8ec9ff 100%);
         }
 
         .game-container {
@@ -30,10 +30,10 @@
         }
 
         .title {
-            font-family: "Orbitron", sans-serif;
+            font-family: "Roboto", sans-serif;
             font-size: 48px;
             font-weight: 700;
-            color: #3742fa;
+            color: #4a90e2;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
             letter-spacing: 2px;
@@ -117,7 +117,7 @@
         .bidirectional-arrow {
             width: 100px;
             height: 2px;
-            background-color: #3742fa;
+            background-color: #4a90e2;
             position: relative;
             margin: 0 20px;
             flex-shrink: 0;
@@ -130,8 +130,8 @@
             top: 50%;
             width: 10px;
             height: 10px;
-            border-top: 2px solid #3742fa;
-            border-right: 2px solid #3742fa;
+            border-top: 2px solid #4a90e2;
+            border-right: 2px solid #4a90e2;
         }
 
         .bidirectional-arrow::before {
@@ -192,7 +192,7 @@
         }
 
         button:hover {
-            background-color: #3742fa;
+            background-color: #4a90e2;
         }
 
         #score,
@@ -236,7 +236,7 @@
 
         .current-team {
             font-weight: bold;
-            color: #3742fa;
+            color: #4a90e2;
         }
 
         #startGame {
@@ -262,7 +262,7 @@
         }
 
         .modal h2 {
-            color: #3742fa;
+            color: #4a90e2;
             font-size: 28px;
             margin-bottom: 20px;
             text-align: center;
@@ -284,7 +284,7 @@
         }
 
         .score-5 {
-            color: #3742fa;
+            color: #1d9d00;
             font-weight: bold;
         }
 
@@ -307,7 +307,7 @@
             display: block;
             width: 100%;
             padding: 12px;
-            background-color: #3742fa;
+            background-color: #4a90e2;
             color: white;
             border: none;
             border-radius: 5px;
@@ -389,23 +389,24 @@
                 <h2>How to Play Wavelength</h2>
                 <div class="modal-body">
                     <ol>
+                        <li>Everyone in the team except the Psychic that round looks away.</li>
                         <li>A pair of opposing concepts will be displayed.</li>
-                        <li>The Psychic gives a clue where the target is located
-                            ON THE SPECTRUM between the two concepts</li>
+                        <li>The Psychic clicks "Hide Target" after seeing the target.</li>
+                        <li> They then give a clue where the target is located
+                            on the spectrum between the concepts.</li>
                         <ul>
-                            <li>For example between HOT and COLD</li>
-                            <li>The Psychic can say something like COFFEE!</li>
+                            <li>For example, between HOT and COLD.</li>
+                            <li>The Psychic can say something like tea.</li>
                         </ul>
                         <li>Now it’s up to the Psychic’s team to discuss the
-                            clue and decide where to turn the dial</li>
+                            clue and decide where to turn the dial.</li>
                         <li>Click and drag the needle to set your guess.</li>
-                        <li>Click "Hide Target" to lock in your guess.</li>
                         <li>Click "Reveal Target" to see how close you were.</li>
                         <li>Scoring:
                             <ul>
-                                <li><span class="score-5">5 points:</span> Bull's eye (dark blue)</li>
-                                <li><span class="score-3">3 points:</span> Close (yellow)</li>
-                                <li><span class="score-1">1 point:</span> Near (red)</li>
+                                <li><span class="score-5">5 points:</span> Bull's Eye (Green)</li>
+                                <li><span class="score-3">3 points:</span> Close (Yellow)</li>
+                                <li><span class="score-1">1 point:</span> Not Bad (Red)</li>
                                 <li><span class="score-0">0 points:</span> Miss</li>
                             </ul>
                         </li>
@@ -468,22 +469,33 @@
             let canMoveNeedle = false;
 
             const clues = [
+                ["Fast Food", "Gourmet Food"],
+                ["Mild Food", "Spicy Food"],
+                ["Cheap Product", "Expensive Product"],
+                ["Easy Job", "Difficult Job"],
+                ["Funny Movie", "Serious Movie"],
+                ["Cheap Vacation", "Luxury Vacation"],
+                ["Introvert", "Extrovert"],
+                ["White Person Activity", "POC Activity"],
+                ["White Kid Would Say This to Parent", "Non-White Kid Would Say This to Parent"],
+                ["Bad Haircut", "Great Haircut"],
+                ["Cheap Gift", "Thoughtful Gift"],
+                ["Has Messy Handwriting", "Has Beautiful Handwriting"],
+                ["Bad At Dancing", "Impressive Dancing"],
                 ["Bad Company", "Good Company"],
-                ["Terrible Movie", "Great Movie"],
+                ["Terrible Movie", "Amazing Movie"],
                 ["Forgettable Person", "Memorable Person"],
                 ["Culturally Insignificant", "Culturally Significant"],
                 ["Dry Food", "Wet Food"],
                 ["Easy to Do", "Hard to Do"],
                 ["Feels Bad", "Feels Good"],
                 ["Hairless", "Hairy"],
-                ["Hard to Remember", "Easy to Remember"],
                 ["Cold", "Hot"],
                 ["Inflexible", "Flexible"],
                 ["Clean Food", "Messy Food"],
                 ["Proper Utensil Food", "Finger Food"],
                 ["Want", "Need"],
                 ["Weird Thing to Own", "Normal Thing to Own"],
-                ["Poorly Made", "Well Made"],
                 ["Quiet Place", "Loud Place"],
                 ["Common", "Rare"],
                 ["Bad Influence", "Role Model"],
@@ -492,7 +504,7 @@
                 ["Ugly", "Beautiful"],
                 ["Underpaid Job", "Overpaid Job"],
                 ["Underrated Skill", "Overrated Skill"],
-                ["Unsexy Emoji", "Sexy Emoji"],
+            //  ["Unsexy Emoji", "Sexy Emoji"],
                 ["Useless", "Useful"],
                 ["Villain", "Hero"],
                 ["Worst Day Ever", "Best Day Ever"],
@@ -511,19 +523,17 @@
                 ["Worst Chore", "Most Satisfying Chore"],
                 ["Forgettable Song", "Catchy Song"],
                 ["Useless App", "Must-Have App"],
-                ["Terrible Supervillain Name", "Awesome Superhero Name"],
-                ["Worst Flavor", "Best Flavor"],
+                ["Terrible Superhero Name", "Awesome Superhero Name"],
+                ["Worst Flavour", "Best Flavour"],
                 ["Boring Museum Exhibit", "Mind-Blowing Museum Exhibit"],
                 ["Terrible Band Name", "Awesome Band Name"],
                 ["Worst Yearbook Quote", "Best Yearbook Quote"],
                 ["Lame Excuse", "Believable Excuse"],
-                ["Terrible Mascot", "Lovable Mascot"],
                 ["Worst Invention", "Life-Changing Invention"],
                 ["Annoying Commercial", "Memorable Commercial"],
                 ["Terrible Pickup Line", "Smooth Pickup Line"],
                 ["Worst Sandwich Filling", "Best Sandwich Filling"],
-                ["Boring Screensaver", "Hypnotic Screensaver"],
-                ["Useless Life Hack", "Game-Changing Life Hack"],
+                ["Boring Wallpaper", "Cool Wallpaper"],
                 ["Terrible Sitcom Premise", "Hilarious Sitcom Premise"],
                 ["Worst Karaoke Song", "Crowd-Pleasing Karaoke Song"],
                 ["Annoying Social Media Trend", "Fun Social Media Trend"],
@@ -531,38 +541,32 @@
                 ["Worst Tongue Twister", "Most Challenging Tongue Twister"],
                 ["Boring Screensaver", "Mesmerizing Screensaver"],
                 ["Terrible Tattoo", "Meaningful Tattoo"],
-                ["Worst Bumper Sticker", "Clever Bumper Sticker"],
                 ["Annoying Catchphrase", "Iconic Catchphrase"],
                 ["Terrible Team Name", "Intimidating Team Name"],
-                [
-                    "Worst Flavor Combination",
-                    "Unexpectedly Delicious Flavor Combination",
-                ],
+                ["Worst Flavour Combination", "Unexpectedly Delicious Flavour Combination"],
                 ["Useless College Course", "Life-Changing College Course"],
                 ["Terrible Podcast Topic", "Binge-Worthy Podcast Topic"],
                 ["Worst Theme Park Ride", "Thrilling Theme Park Ride"],
-                ["Annoying Pet Trick", "Impressive Pet Trick"],
+                ["Stupid Pet Trick", "Impressive Pet Trick"],
                 ["Terrible Workout", "Effective Workout"],
                 ["Worst Board Game", "Addictive Board Game"],
                 ["Annoying Habit", "Endearing Quirk"],
-                ["Terrible Prank", "Harmless Prank"],
-                ["Worst Cereal Mascot", "Beloved Cereal Mascot"],
+                ["Terrible Prank", "Harmless Fun Prank"],
                 ["Annoying Alarm Sound", "Gentle Wake-Up Alarm"],
-                ["Terrible Vacation Spot", "Dream Vacation Destination"],
+                ["Terrible Vacation Destination", "Dream Vacation Destination"],
                 ["Worst Toy", "Must-Have Toy"],
                 ["Annoying TV Character", "Fan-Favorite TV Character"],
                 ["Terrible Superpower Side Effect", "Awesome Superpower Perk"],
-                ["Worst Ice Cream Flavor", "Innovative Ice Cream Flavor"],
+                ["Worst Ice Cream Flavour", "Innovative Ice Cream Flavour"],
                 ["Annoying Text Abbreviation", "Useful Text Abbreviation"],
                 ["Terrible Costume Idea", "Creative Costume Idea"],
                 ["Worst Cooking Mistake", "Game-Changing Cooking Tip"],
                 ["Annoying Exercise", "Fun Exercise"],
                 ["Terrible Breakup Method", "Respectful Breakup Method"],
                 ["Worst Motivational Poster", "Actually Motivating Poster"],
-                ["Annoying Car Feature", "Useful Car Feature"],
                 ["Terrible Hiding Spot", "Clever Hiding Spot"],
                 ["Worst Trend from Your Parents' Era", "Cool Retro Trend"],
-                ["Annoying Tourist Behavior", "Respectful Tourist Behavior"],
+                ["Annoying Tourist Behaviour", "Respectful Tourist Behaviour"],
                 ["Terrible Roommate Habit", "Ideal Roommate Quality"],
                 ["Worst Reason to Call in Sick", "Legitimate Reason to Call in Sick"],
                 ["Annoying Phone Notification", "Important Phone Notification"],
@@ -571,13 +575,10 @@
                 ["Annoying Gym Behavior", "Proper Gym Etiquette"],
                 ["Terrible Airline", "Top-Rated Airline"],
                 ["Worst Bathroom Graffiti", "Profound Bathroom Graffiti"],
-                ["Annoying Concert Behavior", "Considerate Concert Behavior"],
-                ["Terrible Hogwarts House", "Best Hogwarts House"],
+                ["Annoying Concert Behaviour", "Considerate Concert Behaviour"],
+                ["Lamest Harry Potter Character", "Bad-ass Harry Potter Character"],
                 ["Worst Reason to Get a Pet", "Great Reason to Get a Pet"],
-                [
-                    "Annoying Email Subject Line",
-                    "Attention-Grabbing Email Subject Line",
-                ],
+                ["Annoying Email Subject Line", "Attention-Grabbing Email Subject Line"],
                 ["Terrible Wifi Network Name", "Clever Wifi Network Name"],
             ];
 
