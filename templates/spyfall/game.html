@@ -21,6 +21,7 @@
         </div>
 
         <button id="startBtn" class="start-btn">Start Timer</button>
+        <button id="pauseBtn" class="start-btn" style="display:none;">Pause</button>
 
         <!-- Locations section -->
         <h2 class="subtitle">Possible Locations</h2>
@@ -37,6 +38,11 @@
                 New Game
             </button>
         </form>
+
+         <!-- Home -->
+        <a href="/" class="new-game-btn" style="text-decoration:none; text-align:center;">
+            Back to Home
+        </a>
     </div>
 
     <!-- Timer Script -->
@@ -48,9 +54,10 @@
 
             const timerDisplay = document.getElementById('timerDisplay');
             const startBtn = document.getElementById('startBtn');
+            const pauseBtn = document.getElementById('pauseBtn');
 
             let intervalId = null;
-            let started = false;
+            let running = false;
 
             function formatTime(sec) {
                 const m = Math.floor(sec / 60);
@@ -61,24 +68,45 @@
             timerDisplay.textContent = formatTime(timeLeft);
 
             function startTimer() {
-                if (started) return;
-                started = true;
+                if (running) return;
+                running = true;
                 startBtn.disabled = true;
+                pauseBtn.style.display = "block";
 
                 intervalId = setInterval(() => {
                     timeLeft--;
-
                     if (timeLeft < 0) {
                         clearInterval(intervalId);
                         timerDisplay.textContent = "Time's up!";
                         return;
                     }
-
                     timerDisplay.textContent = formatTime(timeLeft);
                 }, 1000);
             }
 
+            function togglePause() {
+                if (!running) return;
+
+                if (intervalId) {
+                    clearInterval(intervalId);
+                    intervalId = null;
+                    pauseBtn.textContent = "Continue";
+                } else {
+                    intervalId = setInterval(() => {
+                        timeLeft--;
+                        if (timeLeft < 0) {
+                            clearInterval(intervalId);
+                            timerDisplay.textContent = "Time's up!";
+                            return;
+                        }
+                        timerDisplay.textContent = formatTime(timeLeft);
+                    }, 1000);
+                    pauseBtn.textContent = "Pause";
+                }
+            }
+
             startBtn.addEventListener('click', startTimer);
+            pauseBtn.addEventListener('click', togglePause);
         })();
     </script>
 
