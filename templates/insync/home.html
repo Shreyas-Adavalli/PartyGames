@@ -768,7 +768,7 @@
             document.addEventListener("touchmove", handleMove);
             document.addEventListener("touchend", handleEnd);
 
-            /*toggleButton.addEventListener("click", () => {
+            toggleButton.addEventListener("click", () => {
                 isTargetVisible = !isTargetVisible;
                 targetArea.style.display = isTargetVisible ? "block" : "none";
                 if (!isTargetVisible) {
@@ -798,9 +798,9 @@
                         triggerConfetti();
                     }
                 }
-            });*/
+            });
 
-            toggleButton.addEventListener("click", () => {
+            /*toggleButton.addEventListener("click", () => {
 
                 // PHASE 1 — Target currently visible → Hide it
                 if (isTargetVisible) {
@@ -858,10 +858,10 @@
 
                     return; // End Phase 3
                 }
-            });
+            });*/
 
 
-            /*flowButton.addEventListener("click", () => {
+            flowButton.addEventListener("click", () => {
                 if (flowState === 0) {
                     // STEP 1 → Hide Target
                     targetArea.style.display = "none";
@@ -893,7 +893,7 @@
                     flowState = 0;
                     flowButton.textContent = "Hide Target";
                 }
-            });*/
+            });
 
             newGameButton.addEventListener("click", () => {
                 teams.forEach(team => team.score = 0);
