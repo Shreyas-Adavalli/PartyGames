@@ -389,7 +389,7 @@
                 <h2>How to Play In-Sync</h2>
                 <div class="modal-body">
                     <ol>
-                        <li>Everyone in the team, except one, looks away.</li>
+                        <li>Everyone in the first team, except one, looks away.</li>
                         <li>A pair of opposing concepts will be displayed.</li>
                         <li>That player clicks "Hide Target" after seeing the target.</li>
                         <li> They then give a clue (a word, phrase or sentence) of where the target is located
@@ -411,7 +411,7 @@
                             </ul>
                         </li>
                         <li>Click "Next Round" to continue or "New Game" to start over.</li>
-                        <li>The next team does the same with a different person looking each round.</li>
+                        <li>The next team does the same with a different person giving the clue each round.</li>
                     </ol>
                 </div>
                 <button class="close-button">Got it!</button>
@@ -487,7 +487,7 @@
                 ["Fruity Character", "Straight Character"],
                 ["Gay", "Straight"],
                 ["Funny Movie", "Serious Movie"],
-                ["Normie Movie", "Cinephile Movie"]
+                ["Normie Movie", "Cinephile Movie"],
                 ["Cheap Vacation", "Luxury Vacation"],
                 ["Introvert", "Extrovert"],
                 ["White Person Activity", "POC Activity"],
@@ -768,7 +768,7 @@
             document.addEventListener("touchmove", handleMove);
             document.addEventListener("touchend", handleEnd);
 
-            toggleButton.addEventListener("click", () => {
+            /*toggleButton.addEventListener("click", () => {
                 isTargetVisible = !isTargetVisible;
                 targetArea.style.display = isTargetVisible ? "block" : "none";
                 if (!isTargetVisible) {
@@ -798,42 +798,41 @@
                         triggerConfetti();
                     }
                 }
+            });*/
+
+            flowButton.addEventListener("click", () => {
+                if (flowState === 0) {
+                    // STEP 1 → Hide Target
+                    targetArea.style.display = "none";
+                    showNeedle();
+                    canMoveNeedle = true;
+                    flowState = 1;
+                    flowButton.textContent = "Reveal Target";
+                }
+                else if (flowState === 1) {
+                    // STEP 2 → Reveal Target
+                    targetArea.style.display = "block";
+                    const needleAngle = parseFloat(needle.style.transform.replace("rotate(", "").replace("deg)", "")) || 0;
+                    const score = calculateScore(needleAngle);
+                    teams[currentTeamIndex].score += score;
+                    scoreElement.textContent = `${teams[currentTeamIndex].name} scored: ${score} points`;
+                    updateScoreDisplay();
+                    canMoveNeedle = false;
+                    flowState = 2;
+                    flowButton.textContent = "Next Round";
+                }
+                else if (flowState === 2) {
+                    // STEP 3 → Next Round
+                    setTargetArea();
+                    setRandomClues();
+                    hideNeedle();
+                    currentTeamIndex = (currentTeamIndex + 1) % teams.length;
+                    updateScoreDisplay();
+                    scoreElement.textContent = "";
+                    flowState = 0;
+                    flowButton.textContent = "Hide Target";
+                }
             });
-
-                flowButton.addEventListener("click", () => {
-                    if (flowState === 0) {
-                        // STEP 1 → Hide Target
-                        targetArea.style.display = "none";
-                        hideNeedle();
-                        flowState = 1;
-                        flowButton.textContent = "Reveal Target";
-                    }
-
-                    else if (flowState === 1) {
-                        // STEP 2 → Reveal Target
-                        targetArea.style.display = "block";
-                        isTargetVisible = true;
-                        needle.style.transform = "rotate(0deg)";
-                        flowState = 2;
-                        flowButton.textContent = "Next Round";
-                    }
-
-                    else if (flowState === 2) {
-                        // STEP 3 → Next Round
-                        setTargetArea();
-                        setRandomClues();
-                        hideNeedle();
-                        isTargetVisible = false;
-
-                        // Move to next team
-                        currentTeamIndex = (currentTeamIndex + 1) % teams.length;
-                        updateScoreDisplay();
-
-                        // Reset to Start of Cycle
-                        flowState = 0;
-                        flowButton.textContent = "Hide Target";
-                    }
-                });
 
             newGameButton.addEventListener("click", () => {
                 teams.forEach(team => team.score = 0);
