@@ -11,6 +11,7 @@ import os
 #first to XX points wins
 #different difficulties
 # Name changes and minor bug fixes (Last definitely working commit)
+#Attempt 2 wasn't completely broken
 
 app = Flask(__name__)
 app.secret_key = "apasswordineedforsomereason" 

@@ -518,7 +518,7 @@
                 ["Ugly", "Beautiful"],
                 ["Underpaid Job", "Overpaid Job"],
                 ["Underrated Skill", "Overrated Skill"],
-            //  ["Unsexy Emoji", "Sexy Emoji"],
+                ["Unsexy Emoji", "Sexy Emoji"],
                 ["Siblings", "Dating"],
                 ["Useless", "Useful"],
                 ["Villain", "Hero"],
@@ -772,7 +772,7 @@
                 isTargetVisible = !isTargetVisible;
                 targetArea.style.display = isTargetVisible ? "block" : "none";
                 if (!isTargetVisible) {
-                    //toggleButton.textContent = "Reveal Target";
+                    toggleButton.textContent = "Reveal Target";
                     scoreElement.textContent = "";
                     showNeedle();
                     canMoveNeedle = true; // Allow needle movement when target is hidden
@@ -798,6 +798,21 @@
                         triggerConfetti();
                     }
                 }
+            });
+
+            nextRoundButton.addEventListener("click", () => {
+                setTargetArea();
+                setRandomClues();
+                isTargetVisible = true;
+                targetArea.style.display = "block";
+                toggleButton.textContent = "Hide Target";
+                toggleButton.style.display = "inline-block";
+                needle.style.transform = "rotate(0deg)";
+                scoreElement.textContent = "";
+                hideNeedle();
+                canMoveNeedle = false; // Re-enable needle movement for the next round
+                currentTeamIndex = (currentTeamIndex + 1) % teams.length;
+                updateScoreDisplay();
             });
 
             /*toggleButton.addEventListener("click", () => {
@@ -861,7 +876,7 @@
             });*/
 
 
-            flowButton.addEventListener("click", () => {
+            /*flowButton.addEventListener("click", () => {
                 if (flowState === 0) {
                     // STEP 1 → Hide Target
                     targetArea.style.display = "none";
@@ -893,7 +908,7 @@
                     flowState = 0;
                     flowButton.textContent = "Hide Target";
                 }
-            });
+            });*/
 
             newGameButton.addEventListener("click", () => {
                 teams.forEach(team => team.score = 0);

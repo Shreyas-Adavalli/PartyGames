@@ -16,11 +16,12 @@ CATEGORIES = {
         "Adam Sandler","Ariana Grande","Beyoncé","Billie Eilish","Brad Pitt",
         "Britney Spears","Chris Evans","Chris Hemsworth","Cristiano Ronaldo",
         "Daniel Radcliffe","Donald Trump","Drake","Dwayne Johnson","Elon Musk",
-        "Emma Watson","Harry Styles","Jim Carrey","Jennifer Lawrence","Justin Bieber",
-        "Kanye West","Leonardo DiCaprio","Mark Zuckerberg","Messi","Neil Armstrong",
-        "Queen Elizabeth II","Rihanna","Robert Downey Jr.","Ryan Reynolds",
+        "Emma Watson","Freddie Mercury","Gordon Ramsey","Harry Styles","Ian McKellen",
+        "Jim Carrey","Jennifer Lawrence","Jennifer Anniston","Justin Bieber","Kanye West",
+        "Leonardo DiCaprio","Mark Zuckerberg","Messi","Neil Armstrong","Olivia Rodrigo", "Oscar Isaac",
+        "Peter Jackson","Princess Diana","Queen Elizabeth II","Rihanna","Robert Downey Jr.","Ryan Reynolds",
         "Scarlett Johansson","Selena Gomez","Shah Rukh Khan","Taylor Swift","Tom Cruise",
-        "Tom Holland","Usain Bolt","Will Smith","Zendaya"
+        "Tom Holland","Usain Bolt", "Virat Kohli", "Will Smith","Zendaya"
     ],
 
 
@@ -36,9 +37,10 @@ CATEGORIES = {
 
     "Food": [
         "Apple", "Bagel","Banana","Bread","Burger","Burrito","Cheese","Chicken Nuggets","Chocolate Cake",
-        "Cupcake","Curry","Donut","Dumplings","Eggs","French Fries","Fried Chicken","Hot Dog","Ice Cream",
-        "Juice","Milk","Muesli Bar","Nachos","Pancakes","Pasta","Pie","Pizza","Popcorn","Ramen","Salad",
-        "Sandwich","Smoothie","Soda","Soup", "Steak","Sushi","Tacos","Waffles", "Watermelon"
+        "Cupcake","Curry","Donut","Dosa","Dumplings","Eggs","French Fries","Fried Chicken","Grilled Cheese",
+        "Garlic Bread","Hot Dog","Ice Cream","Idli","Juice","Kebab","Korean BBQ","Lasagana","Mango","Milk","Muesli Bar",
+        "Nachos","Orange","Pancakes","Pasta","Pie","Pizza","Popcorn","Quesadilla","Ramen","Salad",
+        "Sandwich","Smoothie","Soda","Soup","Steak","Sushi","Tacos","Upma","Vodka","Waffles","Watermelon","Yogurt","Zucchini"
     ],
 
 
