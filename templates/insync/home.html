@@ -417,8 +417,8 @@
                 <button class="close-button">Got it!</button>
             </div>
         </div>
-    <div id="teamSetup" class="team-setup">
-        <h1 class="title">In-Sync</h1>
+     <div id="teamSetup" class="team-setup">
+        <h1 class="title">Wavelength</h1>
         <h2>Team Setup</h2>
         <div class="team-count">
             <label for="teamCount">Number of Teams (1-5):</label>
@@ -429,7 +429,7 @@
         <button id="howToPlayButton" class="how-to-play">How to Play</button>
     </div>
     <div class="game-container">
-        <h1 class="title">In-Sync</h1>
+        <h1 class="title">Wavelength</h1>
         <div class="board">
             <div class="target-area" id="targetArea"></div>
             <div class="needle-container" id="needleContainer">
@@ -442,14 +442,11 @@
             <div class="clue" id="rightClue"></div>
         </div>
         <div class="controls">
-            <button id="flowButton">Hide Target</button>
-            <button id="newGameButton" style="background-color: rgb(255, 104, 58); color: white">
+            <button id="toggleButton">Hide Target</button>
+            <button id="nextRoundButton">Next Round</button>
+            <button id="newGameButton" style="background-color: red; color: white">
                 New Game
             </button>
-            <button id="homeButton" style="background-color: rgb(255, 104, 58); color: white">
-                Back to Home
-            </button>
-
 
         </div>
         <div id="score"></div>
@@ -462,7 +459,7 @@
             const toggleButton = document.getElementById("toggleButton");
             const nextRoundButton = document.getElementById("nextRoundButton");
             const newGameButton = document.getElementById("newGameButton");
-            const homeButton = document.getElementById("homeButton");
+            // const homeButton = document.getElementById("homeButton");
             const cluesElement = document.getElementById("clues");
             const scoreElement = document.getElementById("score");
             const totalScoreElement = document.getElementById("totalScore");
@@ -591,8 +588,7 @@
                 ["Annoying Concert Behaviour", "Considerate Concert Behaviour"],
                 ["Lamest Harry Potter Character", "Bad-ass Harry Potter Character"],
                 ["Worst Reason to Get a Pet", "Great Reason to Get a Pet"],
-                ["Annoying Email Subject Line", "Attention-Grabbing Email Subject Line"],
-                ["Terrible Wifi Network Name", "Clever Wifi Network Name"],
+                ["Annoying Email Subject Line", "Attention-Grabbing Email Subject Line"]
             ];
 
             const teamSetup = document.getElementById('teamSetup');
